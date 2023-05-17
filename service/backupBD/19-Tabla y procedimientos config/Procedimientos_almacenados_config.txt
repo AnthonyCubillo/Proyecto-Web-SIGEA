@@ -1,0 +1,28 @@
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `tb_configuracion_actualizar`(IN `_color` VARCHAR(30), IN `_font_family` VARCHAR(30), IN `_font_size` VARCHAR(30), IN `_id_configuracion` INT(11))
+BEGIN
+UPDATE tb_configuracion SET color= _color,font_family=_font_family,font_size=_font_size WHERE id_configuracion =_id_configuracion;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `tb_configuracion_eliminar`(IN `_id_usuario` INT(11))
+BEGIN
+    DELETE FROM tb_configuracion WHERE _id_usuario = id_usuario;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `tb_configuracion_insertar`(IN `_id_usuario` VARCHAR(50))
+BEGIN 
+INSERT INTO `tb_configuracion`(`color`, `font_family`, `font_size`,`id_usuario`)
+VALUES ('#F8F9F9', 'Yantramanav', '16px', _id_usuario);
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `tb_configuracion_obtener`(IN `_id_usuario` INT(11))
+BEGIN
+SELECT * FROM tb_configuracion WHERE id_usuario = _id_usuario;
+END$$
+DELIMITER ;
